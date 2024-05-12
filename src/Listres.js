@@ -1,15 +1,15 @@
 
 import React, { useState, useEffect } from 'react';
-import './List.css'
+import './Listres.css'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const List = ({url}) => {
+const Listres = ({url}) => {
   const [list,setList] = useState([]);
     const [data,setdata]=useState([])
 
   useEffect(() => {
-    fetch('http://localhost:4000/list', {
+    fetch('http://localhost:5000/listres', {
       method: 'GET',
     
     })
@@ -37,7 +37,7 @@ const List = ({url}) => {
 
   useEffect(() => {
     list.forEach(item => {
-      fetch(`http://localhost:4000/select/${item._id}`, {
+      fetch(`http://localhost:5000/selectres/${item.Restaurant_id}`, {
         method: 'GET'
       })
       .then(response => {
@@ -72,10 +72,10 @@ const List = ({url}) => {
     
   
 
- const removefood=async(foodid)=>
+ const removefood=async(resid)=>
  {
-   console.log(foodid);
-     fetch(`http://localhost:4000/remove/${foodid}`,
+   console.log(resid);
+     fetch(`http://localhost:5000/removeres/${resid}`,
     {
         method: 'DELETE'
       
@@ -86,7 +86,7 @@ const List = ({url}) => {
      {
         if(response.ok)
         {
-            toast.success('Food removed')
+            toast.success('Restaurant removed')
         }
         else{
             toast.error('Error');
@@ -115,14 +115,14 @@ const List = ({url}) => {
  
   return (
     <div className='list-add flex-col'>
-    <p>All foods</p>
+    <p>All Resataurants</p>
     <div className='list-table'>
     <div className='list-table-format title'>
       
       <b>Image</b>
       <b>Name</b>
-      <b>Category</b>
-      <b>Price</b>
+      <b>Address</b>
+      <b>Phone_no</b>
       <b>Action</b>
     </div>
     
@@ -131,14 +131,14 @@ const List = ({url}) => {
        return (
         <div className='list-table-format' key={index}>
     
-        <img className='table-image' src={'http://localhost:4000/'+item.image} alt='image loading' />
+        <img className='table-image' src={'http://localhost:5000/'+item.Res_img} alt='image loading' />
         
 
-          <p>{item.name}</p> 
+          <p>{item.Restaurant_name}</p> 
          
-          <p>{item.category}</p> 
-          <p>${item.price}</p> 
-          <p onClick={()=>removefood(item._id)} className='cursor'>X</p>
+          <p>{item.Restaurant_address}</p> 
+          <p>{item.Phone_num}</p> 
+          <p onClick={()=>removefood(item.Restaurant_id)} className='cursor'>X</p>
            
           </div>
           
@@ -155,7 +155,7 @@ const List = ({url}) => {
 
 
 
-export default List;
+export default Listres;
 
 
 

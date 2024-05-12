@@ -21,9 +21,20 @@ const Sidebar = () => {
           <img className='add' src={add} alt='add is loading'/>
           <p>Add items</p>
         </a>
+
+        <a href='/addres' className='sidebar-option' onClick={handleClick}>
+          <img className='add' src={add} alt='add is loading'/>
+          <p>Add Restaurant</p>
+        </a>
         <a href='/list' className='sidebar-option' onClick={handleClick}>
           <img className='order' src={order} alt='list is loading'/>
           <p>List items</p>
+        </a>
+
+
+        <a href='/listres' className='sidebar-option' onClick={handleClick}>
+          <img className='order' src={order} alt='list is loading'/>
+          <p>List Resataurants</p>
         </a>
         <a href='/orders' className='sidebar-option' onClick={handleClick}>
           <img className='order' src={order} alt='order is loading'/>

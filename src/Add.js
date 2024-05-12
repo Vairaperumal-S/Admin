@@ -6,7 +6,7 @@ import {useNavigate} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './Add.css'
-const Add = ({url}) => {
+const Add = ({}) => {
   const [image,setimage]=useState(false);
   const [data,setdata]=useState({
       id:'',
